@@ -2,13 +2,9 @@ package com.coderscampus.sri;
 
 public class main {
 	public static String FILE_NAME = "student-master-list.csv";
+	public static String[] COURSES = {"COMPSCI", "APMTH", "STAT"};
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello World");
-		Student student = new Student(1, "Bob", "Spanish", 88);
-		System.out.println(student);
-		
 		// Make Service:
 		StudentService service = new StudentService();
 		
@@ -19,22 +15,21 @@ public class main {
 		Student[] studentList = service.makeUserList(lines);
 		
 		// Call service to filter Students by course and export each filtered group to file:
-		String[] courses = {"COMPSCI", "APMTH", "STAT"};
 		Student[] filteredByCourse = null;
-//		Student[] sortedFilteredCourses = null;
+		Student[] sortedFilteredCourses = null;
 		int number = 1;
-		for (String course : courses) {
+		for (String course : COURSES) {
 			// Filter Students by course:
 			filteredByCourse = service.filterStudentsByCourse(course, studentList);
-			for (Student c: filteredByCourse) {
-				System.out.println(c);
-			}
-			System.out.println("Done processing " + course);
+//			for (Student c: filteredByCourse) {
+//				System.out.println(c);
+//			}
+//			System.out.println("Done processing " + course);
 //			// Sort filtered students by DESC order:
-//			sortedFilteredCourses = service.sortStudentsByDesc(filteredByCourse);
+			sortedFilteredCourses = service.sortStudentsByDesc(filteredByCourse);
 			
 			// Export filtered courses to file:
-			service.exportToFile(filteredByCourse, String.format("course%s.csv", number));
+			service.exportToFile(sortedFilteredCourses, String.format("course%s.csv", number));
 			number++;
 		}
 		System.out.println("Program Complete");		

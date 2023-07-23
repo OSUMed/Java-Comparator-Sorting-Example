@@ -1,12 +1,12 @@
 package com.coderscampus.sri;
 
-public class Student {
+public class Student implements Comparable<Student> {
 	private int id;
 	private String name;
 	private String course;
-	private int grade;
+	private Integer grade;
 	
-	public Student(int id, String name, String course, int grade) {
+	public Student(int id, String name, String course, Integer grade) {
 		this.id = id;
         this.name = name;
         this.course = course;
@@ -37,11 +37,11 @@ public class Student {
 		this.course = course;
 	}
 
-	public int getGrade() {
+	public Integer getGrade() {
 		return grade;
 	}
 
-	public void setGrade(int grade) {
+	public void setGrade(Integer grade) {
 		this.grade = grade;
 	}
 	
@@ -49,4 +49,21 @@ public class Student {
     public String toString() {
         return "Student [id=" + id + ", name=" + name + ", course=" + course + ", grade=" + grade + "]";
     }
+
+	// Arrays.sort needs Comparator but Student Object doesn't have it, 
+	// so we implement a Comparable:
+	@Override
+	public int compareTo(Student that) {
+		if (this != null && that != null) {
+			if (this.grade > that.grade) {
+				return -1;
+			}
+			else if (this.grade < that.grade) {
+				return 1;
+			}
+			return this.name.compareTo(that.name);
+			
+		} 
+		return 0;
+	}
 }

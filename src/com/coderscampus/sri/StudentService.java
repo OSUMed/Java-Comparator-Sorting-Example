@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class StudentService {
 	
@@ -19,11 +20,30 @@ public class StudentService {
 				i++;
 			}
 		}
-		return filteredStudents;
+//		for (Student s: filteredStudents) {
+//			System.out.println(s);
+//		}
+//		System.out.println("Done: ");
+		int studentCounter = 0;
+		for (Student s: filteredStudents) {
+			if (s != null) {
+				studentCounter += 1;
+			}
+		}
+		Student[] cleanFilteredStudents = new Student[studentCounter];
+		for (int index=0; index<studentCounter ; index++) {
+			cleanFilteredStudents[index] = filteredStudents[index];
+
+		}
+//		for (Student s: cleanFilteredStudents) {
+//			System.out.println(s);
+//		}
+		return cleanFilteredStudents;
 	}
-//	public static Student[] sortStudentsByDesc(Student[] studentList) {
-//		
-//	}
+	public Student[] sortStudentsByDesc(Student[] studentList){
+		Arrays.sort(studentList);
+		return studentList;
+	}
 	public void exportToFile(Student[] studentList, String fileName) {
 		BufferedWriter writer = null;
 		// Write Headers and then lines:
@@ -66,9 +86,9 @@ public class StudentService {
 			studentList[i] = newStudent;
 			i++;
 		}
-		for (Student s: studentList) {
-			System.out.println(s);
-		}
+//		for (Student s: studentList) {
+//			System.out.println(s);
+//		}
 		return studentList;
 	}
 	public static String[] parseFile(String fileName) {
@@ -102,9 +122,9 @@ public class StudentService {
 				e.printStackTrace();
 			}
 		}
-		for (String l: lines) {
-			System.out.println(l);
-		}
+//		for (String l: lines) {
+//			System.out.println(l);
+//		}
 		return lines;
 	}
 }
