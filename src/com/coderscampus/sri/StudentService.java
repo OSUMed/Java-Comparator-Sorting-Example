@@ -19,10 +19,10 @@ public class StudentService {
 		// Write Headers and then lines:
 		try {
 			writer = new BufferedWriter(new FileWriter("fileName"));
-			writer.write("student-master-list");
-			writer.write("Student ID,Student Name,Course,Grade");
+			writer.write("student-master-list\n");
+			writer.write("Student ID,Student Name,Course,Grade\n");
 			for (Student student: studentList) {
-				String writeToFile = String.format("%i, %s, %s, %i", student.getId(), student.getName(), student.getCourse(), student.getGrade());
+				String writeToFile = String.format("%i, %s, %s, %i\n", student.getId(), student.getName(), student.getCourse(), student.getGrade());
 				writer.write(writeToFile);
 			}
 		} catch (IOException e) {
