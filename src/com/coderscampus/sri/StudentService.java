@@ -6,6 +6,15 @@ import java.io.IOException;
 
 public class StudentService {
 	
+	public static Student[] filterStudentsByCourse(Student[] studentList, String course) {
+		Student[] filteredStudents
+	}
+	public static Student[] sortStudentsByDesc(Student[] studentList) {
+		
+	}
+	public static void exportToFile(Student[] studentList) {
+		
+	}
 	public static Student[] makeUserList(String[] lines) {
 		Student[] studentList = new Student[101];
 		int i = 0;
