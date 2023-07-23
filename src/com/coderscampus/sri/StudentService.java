@@ -5,6 +5,28 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class StudentService {
+	
+	public static Student[] makeUserList(String[] lines) {
+		Student[] studentList = new Student[101];
+		int i = 0;
+		for (String line: lines) {
+			if (line == null) {
+				continue;
+			}
+			String[] studentProperties = line.split(",");
+			int id = Integer.parseInt(studentProperties[0]);
+			String name = studentProperties[1];
+			String course = studentProperties[2];
+			int grade = Integer.parseInt(studentProperties[3]);
+			Student newStudent = new Student(id, name, course, grade);
+			studentList[i] = newStudent;
+			i++;
+		}
+		for (Student s: studentList) {
+			System.out.println(s);
+		}
+		return studentList;
+	}
 	public static String[] parseFile(String fileName) {
 		BufferedReader reader = null;
 		try {

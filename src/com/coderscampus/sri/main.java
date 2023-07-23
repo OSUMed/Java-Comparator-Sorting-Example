@@ -11,7 +11,13 @@ public class main {
 		
 		// Make Service:
 		StudentService service = new StudentService();
+		
+		// Parse File using service:
 		String[] lines = service.parseFile(FILE_NAME);
+		
+		// Make user object list using service:
+		Student[] users = service.makeUserList(lines);
+		System.out.println(users);
 		System.out.println(lines);
 	}
 
