@@ -27,8 +27,8 @@ public class main {
 			// Filter Students by course:
 			filteredByCourse = service.filterStudentsByCourse(course, lines);
 			
-			// Sort filtered students by DESC order:
-			sortedFilteredCourses = service.sortStudentsByDesc(filteredByCourse);
+//			// Sort filtered students by DESC order:
+//			sortedFilteredCourses = service.sortStudentsByDesc(filteredByCourse);
 			
 			// Export filtered courses to file:
 			service.exportToFile(filteredByCourse, String.format("course%s.csv", number));

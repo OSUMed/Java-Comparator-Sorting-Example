@@ -1,6 +1,8 @@
 package com.coderscampus.sri;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -9,10 +11,31 @@ public class StudentService {
 	public static Student[] filterStudentsByCourse(Student[] studentList, String course) {
 		Student[] filteredStudents
 	}
-	public static Student[] sortStudentsByDesc(Student[] studentList) {
-		
-	}
-	public static void exportToFile(Student[] studentList) {
+//	public static Student[] sortStudentsByDesc(Student[] studentList) {
+//		
+//	}
+	public static void exportToFile(Student[] studentList, String fileName) {
+		BufferedWriter writer = null;
+		// Write Headers and then lines:
+		try {
+			writer = new BufferedWriter(new FileWriter("fileName"));
+			writer.write("student-master-list");
+			writer.write("Student ID,Student Name,Course,Grade");
+			for (Student student: studentList) {
+				String writeToFile = String.format("%i, %s, %s, %i", student.getId(), student.getName(), student.getCourse(), student.getGrade());
+				writer.write(writeToFile);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	public static Student[] makeUserList(String[] lines) {
