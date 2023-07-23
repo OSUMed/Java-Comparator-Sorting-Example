@@ -57,7 +57,7 @@ public class Student implements Comparable<Student> {
 		// If grade is bigger, then we return -1, thus, appears before:
 		if (this.grade > that.grade) {
 			return -1;
-		// If grade is smaller, then we return 1, thus, appears after:
+			// If grade is smaller, then we return 1, thus, appears after:
 		} else if (this.grade < that.grade) {
 			return 1;
 		}
