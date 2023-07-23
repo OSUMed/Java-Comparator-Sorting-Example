@@ -8,21 +8,33 @@ import java.io.IOException;
 
 public class StudentService {
 	
-	public static Student[] filterStudentsByCourse(Student[] studentList, String course) {
-		Student[] filteredStudents
+	public Student[] filterStudentsByCourse(String course, Student[] studentList) {
+		Student[] filteredStudents = new Student[100];
+		int i = 0;
+		for (Student student: studentList) {
+			String[] fullStudentCourse = student.getCourse().split(" ");
+			String studentCourse = fullStudentCourse[0];
+			if (studentCourse.equals(course)) {
+				filteredStudents[i] = student;
+				i++;
+			}
+		}
+		return filteredStudents;
 	}
 //	public static Student[] sortStudentsByDesc(Student[] studentList) {
 //		
 //	}
-	public static void exportToFile(Student[] studentList, String fileName) {
+	public void exportToFile(Student[] studentList, String fileName) {
 		BufferedWriter writer = null;
 		// Write Headers and then lines:
 		try {
-			writer = new BufferedWriter(new FileWriter("fileName"));
-			writer.write("student-master-list\n");
+			writer = new BufferedWriter(new FileWriter(fileName));
 			writer.write("Student ID,Student Name,Course,Grade\n");
 			for (Student student: studentList) {
-				String writeToFile = String.format("%i, %s, %s, %i\n", student.getId(), student.getName(), student.getCourse(), student.getGrade());
+				if (student == null) {
+					continue;
+				}
+				String writeToFile = String.format("%d, %s, %s, %d\n", student.getId(), student.getName(), student.getCourse(), student.getGrade());
 				writer.write(writeToFile);
 			}
 		} catch (IOException e) {
@@ -39,7 +51,7 @@ public class StudentService {
 		
 	}
 	public static Student[] makeUserList(String[] lines) {
-		Student[] studentList = new Student[101];
+		Student[] studentList = new Student[100];
 		int i = 0;
 		for (String line: lines) {
 			if (line == null) {

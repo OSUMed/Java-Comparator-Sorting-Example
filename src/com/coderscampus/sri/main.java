@@ -16,17 +16,20 @@ public class main {
 		String[] lines = service.parseFile(FILE_NAME);
 		
 		// Make user object list using service:
-		Student[] users = service.makeUserList(lines);
+		Student[] studentList = service.makeUserList(lines);
 		
 		// Call service to filter Students by course and export each filtered group to file:
 		String[] courses = {"COMPSCI", "APMTH", "STAT"};
 		Student[] filteredByCourse = null;
-		Student[] sortedFilteredCourses = null;
+//		Student[] sortedFilteredCourses = null;
 		int number = 1;
 		for (String course : courses) {
 			// Filter Students by course:
-			filteredByCourse = service.filterStudentsByCourse(course, lines);
-			
+			filteredByCourse = service.filterStudentsByCourse(course, studentList);
+			for (Student c: filteredByCourse) {
+				System.out.println(c);
+			}
+			System.out.println("Done processing " + course);
 //			// Sort filtered students by DESC order:
 //			sortedFilteredCourses = service.sortStudentsByDesc(filteredByCourse);
 			
