@@ -5,12 +5,12 @@ public class Student implements Comparable<Student> {
 	private String name;
 	private String course;
 	private Integer grade;
-	
+
 	public Student(int id, String name, String course, Integer grade) {
 		this.id = id;
-        this.name = name;
-        this.course = course;
-        this.grade = grade;
+		this.name = name;
+		this.course = course;
+		this.grade = grade;
 	}
 
 	public int getId() {
@@ -44,26 +44,25 @@ public class Student implements Comparable<Student> {
 	public void setGrade(Integer grade) {
 		this.grade = grade;
 	}
-	
-    @Override
-    public String toString() {
-        return "Student [id=" + id + ", name=" + name + ", course=" + course + ", grade=" + grade + "]";
-    }
 
-	// Arrays.sort needs Comparator but Student Object doesn't have it, 
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", course=" + course + ", grade=" + grade + "]";
+	}
+
+	// Arrays.sort needs Comparator but Student Object doesn't have it,
 	// so we implement a Comparable:
 	@Override
 	public int compareTo(Student that) {
-		if (this != null && that != null) {
-			if (this.grade > that.grade) {
-				return -1;
-			}
-			else if (this.grade < that.grade) {
-				return 1;
-			}
-			return this.name.compareTo(that.name);
-			
-		} 
-		return 0;
+		// If grade is bigger, then we return -1, thus, appears before:
+		if (this.grade > that.grade) {
+			return -1;
+		// If grade is smaller, then we return 1, thus, appears after:
+		} else if (this.grade < that.grade) {
+			return 1;
+		}
+		// If grade is equal, we use String Comparator to compare:
+		return this.name.compareTo(that.name);
+
 	}
 }
