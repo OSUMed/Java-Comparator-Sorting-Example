@@ -50,19 +50,19 @@ public class Student implements Comparable<Student> {
 		return "Student [id=" + id + ", name=" + name + ", course=" + course + ", grade=" + grade + "]";
 	}
 
-	// Arrays.sort needs Comparator but Student Object doesn't have it,
-	// so we implement a Comparable:
+	// Student class implements Comparable interface for sorting by grade and name
+	// when used with Arrays.sort() or other sorting methods:
 	@Override
 	public int compareTo(Student that) {
-		// If grade is bigger, then we return -1, thus, appears before:
-		if (this.grade > that.grade) {
-			return -1;
-			// If grade is smaller, then we return 1, thus, appears after:
-		} else if (this.grade < that.grade) {
-			return 1;
-		}
-		// If grade is equal, we use String Comparator to compare:
-		return this.name.compareTo(that.name);
-
+	    // If grade is bigger, then return -1 to appear before:
+	    if (this.grade > that.grade) {
+	        return -1;
+	    // If grade is smaller, then return 1 to appear after:
+	    } else if (this.grade < that.grade) {
+	        return 1;
+	    }
+	    // If grades are equal, use String Comparator to compare names:
+	    return this.name.compareTo(that.name);
 	}
+
 }
