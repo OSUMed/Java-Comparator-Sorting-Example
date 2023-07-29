@@ -1,6 +1,6 @@
 package com.coderscampus.sri;
 
-public class Main {
+public class StudentFilterApplication {
 	// File name for the student master list CSV file
 	public static String FILE_NAME = "student-master-list.csv";
 
