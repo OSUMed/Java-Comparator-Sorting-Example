@@ -18,14 +18,16 @@ public class StudentService {
 	 * @return An array of Student objects that match the given course.
 	 */
 	public Student[] filterStudentsByCourse(String course, Student[] studentList) {
+		
+		// Create an array to store students with the matching course name
 		Student[] filteredStudents = new Student[100];
 		int i = 0;
 		
-		// Get course name from full course name, then filter students by course name:
+		// Get course name abbreviation from full course name, then filter students that match 
 		for (Student student : studentList) {
 			String[] fullStudentCourse = student.getCourse().split(" ");
-			String studentCourse = fullStudentCourse[0];
-			if (studentCourse.equals(course)) {
+			String studentCourseAbbr = fullStudentCourse[0];
+			if (studentCourseAbbr.equals(course)) {
 				filteredStudents[i] = student;
 				i++;
 			}
