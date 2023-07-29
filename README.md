@@ -30,7 +30,7 @@ The project directory contains the following files and directories:
 1. Clone this repository to your local machine:
 
    ```
-   git clone https://github.com/yourusername/college-data-management.git
+   git clone https://github.com/OSUMed/sri-assignment-4.git
    ```
 
 2. Place the input CSV file "student-master-list.csv" in the project root directory.
@@ -38,7 +38,7 @@ The project directory contains the following files and directories:
 3. Compile and run the Java program:
 
    ```
-   cd college-data-management/src
+   cd sri-assignment-4/src
    javac Main.java
    java Main
    ```
