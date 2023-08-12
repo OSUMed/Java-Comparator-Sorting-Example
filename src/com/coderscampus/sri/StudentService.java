@@ -12,7 +12,6 @@ public class StudentService {
 
 	private FileService fileService;
 	Student[] students = new Student[100];
-	// File name for the student master list CSV file
 	public static String FILE_NAME = "student-master-list.csv";
 
 	public StudentService() {
@@ -25,7 +24,6 @@ public class StudentService {
 	/**
 	 * Sorts the array of Student objects in descending order of their grade.
 	 *
-	 * @param studentList An array of Student objects to be sorted.
 	 * @return A sorted array of Student objects in descending order of their grade.
 	 */
 	public Student[] sortStudentsByDesc() {
@@ -73,8 +71,7 @@ public class StudentService {
 	 * Filters the array of Student objects with the given course.
 	 *
 	 * @param course      The course to be used as a filter.
-	 * @param studentList An array of Student objects to be filtered.
-	 * @return An array of Student objects that match the given course.
+	 * @return An array of sorted Student objects that match the given course.
 	 */
 	public Student[] filterStudentsByCourse(String course) {
 
@@ -84,7 +81,7 @@ public class StudentService {
 
 		// Get course name abbreviation from full course name, then filter students that
 		// match
-		for (Student student : studentList) {
+		for (Student student : students) {
 			String[] fullStudentCourse = student.getCourse().split(" ");
 			String studentCourseAbbr = fullStudentCourse[0];
 			if (studentCourseAbbr.equals(course)) {
