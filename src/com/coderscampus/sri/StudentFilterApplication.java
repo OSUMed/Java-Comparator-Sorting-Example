@@ -7,13 +7,9 @@ public class StudentFilterApplication {
 
 
 	public static void main(String[] args) {
-//		StudentService service = new StudentService();
-//
-//		// Parse the CSV File and create an array of Student objects:
-//		String[] lines = service.parseFile(FILE_NAME);
-//		Student[] studentList = service.makeUserList(lines);
 		
 		StudentService service = new StudentService();
+
 
 		// Filter students by course, sort in descending order of grade, and export each group to a separate file
 		int courseNumber = 1;
