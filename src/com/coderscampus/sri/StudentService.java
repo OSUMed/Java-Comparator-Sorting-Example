@@ -93,5 +93,15 @@ public class StudentService {
 		// Return the new array
 		return filteredStudents;
 	}
+	
+	/**
+	 * Calls file service to write data into file
+	 *
+	 * @param students    The sorted and filtered student object array that needs to be written to file
+	 * @param filename    The name of the file the student objects need to be written in
+	 */
+	public void saveStudents(Student[] students, String filename) {
+		fileService.exportToFile(students, filename);
+	}
 
 }
