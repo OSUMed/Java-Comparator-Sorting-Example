@@ -19,6 +19,7 @@ public class StudentService {
 		String[] data = fileService.parseFile(FILE_NAME);
 		loadStudents(data);
 		sortStudentsByDesc();
+
 	}
 
 	/**
@@ -37,11 +38,8 @@ public class StudentService {
 	 *
 	 * @param lines An array of strings, each representing a line of student
 	 *              information in the format "id,name,course,grade".
-	 * @return An array of Student objects containing the parsed student
-	 *         information.
 	 */
-	public Student[] loadStudents(String[] lines) {
-		Student[] studentList = new Student[100];
+	public void loadStudents(String[] lines) {
 		int i = 0;
 
 		// Iterate through each line:
@@ -61,10 +59,9 @@ public class StudentService {
 			Student newStudent = new Student(id, name, course, grade);
 
 			// Add the new Student object to the Student array:
-			studentList[i] = newStudent;
+			students[i] = newStudent;
 			i++;
 		}
-		return studentList;
 	}
 
 	/**
