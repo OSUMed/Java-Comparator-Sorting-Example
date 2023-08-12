@@ -93,22 +93,8 @@ public class StudentService {
 			}
 		}
 
-		// Count students that match the course name to determine the new array size
-		int studentCounter = 0;
-		for (Student s : filteredStudents) {
-			if (s != null) {
-				studentCounter++;
-			}
-		}
-
-		// Create a new array with filtered students (without null values)
-		Student[] cleanFilteredStudents = new Student[studentCounter];
-		for (int index = 0; index < studentCounter; index++) {
-			cleanFilteredStudents[index] = filteredStudents[index];
-		}
-
 		// Return the new array
-		return cleanFilteredStudents;
+		return filteredStudents;
 	}
 
 }
